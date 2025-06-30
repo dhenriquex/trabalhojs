@@ -12,27 +12,32 @@
       <div class="container">
         <div class="avatar-container">
           <div class="avatar">
-            <canvas id="avatarCanvas" width="300" height="300"></canvas>
+            <canvas id="avatarCanvas" width="800" height="804"></canvas>
           </div>
-          <button class="save-btn" onclick="salvarPersonagem()">
+          <button class="save-btn" onclick="salvarAvatar()">
             Salvar Avatar
+          </button>
+          <button class="save-btn" onclick="salvarAvatarComo()">
+            Salvar Avatar Como...
           </button>
         </div>
 
         <div class="controles">
           <div class="lista">
             <ul>
+              <li data-category="base">Base</li>
               <li data-category="nariz" class="active">Nariz</li>
               <li data-category="olhos">Olhos</li>
               <li data-category="boca">Boca</li>
-              <li data-category="cabelo">Cabelo</li>
-              <li data-category="franja">Franja</li>
-              <li data-category="orelha">Orelhas</li>
+              <li data-category="cabelo">Chapéu</li>
               <li data-category="roupa">Roupa</li>
             </ul>
           </div>
 
           <div class="opcoes-container">
+            <div class="opcao" id="base-options">
+              <div class="opcoes-grid"></div>
+            </div>
             <div class="opcao active" id="nariz-options">
               <div class="opcoes-grid"></div>
             </div>
@@ -43,9 +48,6 @@
               <div class="opcoes-grid"></div>
             </div>
             <div class="opcao" id="cabelo-options">
-              <div class="opcoes-grid"></div>
-            </div>
-            <div class="opcao" id="franja-options">
               <div class="opcoes-grid"></div>
             </div>
             <div class="opcao" id="orelha-options">
@@ -60,5 +62,6 @@
     </main>
     <script src="./assents/scripts/lista.js"></script>
     <script src="./assents/scripts/script.js"></script>
+    <script src="./assents/scripts/canvas.js"></script>
   </body>
 </html>
