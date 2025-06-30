@@ -103,7 +103,7 @@ if (colorPicker) {
             strokeColors[categoriaAtiva] = this.value;
             desenharAvatar();
         }
-    });
+    }); 
 }
 
 // Handlers para cada color picker

@@ -18,7 +18,7 @@ function inicializarNavegacao() {
   opcoes.forEach((opcao) => opcao.classList.remove("active"));
   document.querySelector('.lista li[data-category="base"]').classList.add("active");
   document.getElementById("base-options").classList.add("active");
-  categoriaAtiva = "base";
+  categoriaAtiva = "base"; 
   mostrarPicker('base');
   listaItems.forEach((item) => {
     item.addEventListener("click", () => {
