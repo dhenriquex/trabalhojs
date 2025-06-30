@@ -1,7 +1,14 @@
-let categoriaAtiva = "nariz";
+let categoriaAtiva = "base";
 function inicializarNavegacao() {
   const listaItems = document.querySelectorAll(".lista li");
   const opcoes = document.querySelectorAll(".opcao");
+
+  // Ativa a categoria 'base' ao carregar
+  listaItems.forEach((li) => li.classList.remove("active"));
+  opcoes.forEach((opcao) => opcao.classList.remove("active"));
+  document.querySelector('.lista li[data-category="base"]').classList.add("active");
+  document.getElementById("base-options").classList.add("active");
+  categoriaAtiva = "base";
 
   listaItems.forEach((item) => {
     item.addEventListener("click", () => {
