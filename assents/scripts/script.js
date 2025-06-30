@@ -5,50 +5,44 @@ const status = document.getElementById("status");
 
 // Base de dados das imagens
 const imagemDB = {
+  base: ["./img/base.png"],
   olhos: [
-    "./assents/img/boca/gt1.jpg",
-    "./assents/img/boca/gt1.jpg",
-    "./assents/img/boca/gt1.jpg",
+    "./img/olho_1.png",
+    "./img/olho_2.png",
+    "./img/olho_3.png",
+    "./img/olho_4.png",
   ],
   nariz: [
-    "./assents/img/boca/gt2.jpg",
-    "./assents/img/boca/gt3.jpg",
-    "./assents/img/boca/gt1.jpg",
+    "./img/nariz_1.png",
+    "./img/nariz_2.png",
+    "./img/nariz_3.png",
   ],
   cabelo: [
-    "./assents/img/boca/gt2.jpg",
-    "./assents/img/boca/gt3.jpg",
-    "./assents/img/boca/gt1.jpg",
+    "./img/olho_1.png",
+    "./img/olho_2.png",
+    "./img/olho_3.png",
+    "./img/olho_4.png",
   ],
   boca: [
-    "./assents/img/boca/gt2.jpg",
-    "./assents/img/boca/gt3.jpg",
-    "./assents/img/boca/gt1.jpg",
-  ],
-  orelha: [
-    "../img/orelha/gt1.jpg",
-    "../img/orelha/gt2.webp",
-    "../img/orelha/gt3.jpg",
-  ],
-  franja: [
-    "../img/franja/gt1.jpg",
-    "../img/franja/gt2.webp",
-    "../img/franja/gt3.jpg",
+    "./img/boca_1.png",
+    "./img/boca_2.png",
+    "./img/boca_3.png",
+    "./img/boca_4.png",
   ],
   roupa: [
-    "../img/roupa/gt1.jpg",
-    "../img/roupa/gt2.webp",
-    "../img/roupa/gt3.jpg",
+    "./img/olho_1.png",
+    "./img/olho_2.png",
+    "./img/olho_3.png",
+    "./img/olho_4.png",
   ],
 };
 // Estado atual do avatar
 const avatar = {
+  base: null,
   olhos: null,
   nariz: null,
   cabelo: null,
   boca: null,
-  orelha: null,
-  franja: null,
   roupa: null,
 };
 
@@ -73,6 +67,10 @@ async function carregarTodasImagens() {
       imagensCarregadas[category].push(img);
     }
     criarOpcoesBotoes(category, urls);
+    // console.log(
+    //   `Imagens carregadas para ${category}:`,
+    //   imagensCarregadas[category]
+    // );
   }
   desenharAvatar();
 }
@@ -80,6 +78,21 @@ async function carregarTodasImagens() {
 // Função para criar os botões de opções
 function criarOpcoesBotoes(category, urls) {
   const container = document.querySelector(`#${category}-options .opcoes-grid`);
+  
+  // Redefinir item selecionado para nenhum
+  const noneBtn = document.createElement("button");
+  noneBtn.className = "opcao-btn";
+  noneBtn.dataset.category = category;
+  noneBtn.dataset.option = ""; 
+  noneBtn.title = "X";
+  noneBtn.innerText = "X";
+  noneBtn.onclick = () => {
+    avatar[category] = null;
+    atualizarBotoesAtivos(category, null);
+    desenharAvatar();
+  };
+  container.appendChild(noneBtn);
+  
   // Botões para cada opção
   urls.forEach((url, index) => {
     const button = document.createElement("button");
@@ -107,3 +120,12 @@ window.onload = function () {
   inicializarNavegacao();
   carregarTodasImagens();
 };
+
+function atualizarBotoesAtivos(category, selectedIndex) {
+  const container = document.querySelector(`#${category}-options .opcoes-grid`);
+  container.querySelectorAll(".opcao-btn").forEach((btn) => {
+    const opt = btn.dataset.option === "" ? null : Number(btn.dataset.option);
+    if (opt === selectedIndex) btn.classList.add("selected");
+    else btn.classList.remove("selected");
+  });
+}
