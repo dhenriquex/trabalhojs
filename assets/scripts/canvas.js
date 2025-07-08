@@ -2,6 +2,7 @@ let strokeColors = {
     base: '#000000',
     roupa: '#000000',
     cabelo: '#000000',
+    chapeu: '#000000',
     olhos: '#000000',
     nariz: '#000000',
     boca: '#000000',
@@ -52,34 +53,6 @@ function desenharAvatar() {
         tctx.drawImage(img, 0, 0);
         tctx.globalCompositeOperation = 'source-in';
         tctx.fillStyle = strokeColors.baseCor;
-        tctx.fillRect(0, 0, img.width, img.height);
-        tctx.globalCompositeOperation = 'source-over';
-        ctx.drawImage(temp, 0, 0);
-    }
-    // ROUPA
-    if (avatar.roupa !== null) {
-        let img = imagensCarregadas.roupa[avatar.roupa];
-        let temp = document.createElement('canvas');
-        temp.width = img.width;
-        temp.height = img.height;
-        let tctx = temp.getContext('2d');
-        tctx.drawImage(img, 0, 0);
-        tctx.globalCompositeOperation = 'source-in';
-        tctx.fillStyle = strokeColors.roupa;
-        tctx.fillRect(0, 0, img.width, img.height);
-        tctx.globalCompositeOperation = 'source-over';
-        ctx.drawImage(temp, 0, 0);
-    }
-    // CABELO
-    if (avatar.cabelo !== null) {
-        let img = imagensCarregadas.cabelo[avatar.cabelo];
-        let temp = document.createElement('canvas');
-        temp.width = img.width;
-        temp.height = img.height;
-        let tctx = temp.getContext('2d');
-        tctx.drawImage(img, 0, 0);
-        tctx.globalCompositeOperation = 'source-in';
-        tctx.fillStyle = strokeColors.cabelo;
         tctx.fillRect(0, 0, img.width, img.height);
         tctx.globalCompositeOperation = 'source-over';
         ctx.drawImage(temp, 0, 0);
@@ -165,7 +138,49 @@ function desenharAvatar() {
         tctx.globalCompositeOperation = 'source-in';
         tctx.fillStyle = strokeColors.base;
         tctx.fillRect(0, 0, img.width, img.height);
-        tctx.globalCompositeOperation = 'source-atop'; // para garantir que só o traço fique por cima
+        tctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(temp, 0, 0);
+    }
+    // CABELO
+    if (avatar.cabelo !== null) {
+        let img = imagensCarregadas.cabelo[avatar.cabelo];
+        let temp = document.createElement('canvas');
+        temp.width = img.width;
+        temp.height = img.height;
+        let tctx = temp.getContext('2d');
+        tctx.drawImage(img, 0, 0);
+        tctx.globalCompositeOperation = 'source-in';
+        tctx.fillStyle = strokeColors.cabelo;
+        tctx.fillRect(0, 0, img.width, img.height);
+        tctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(temp, 0, 0);
+    }
+        // CHAPEU
+    if (avatar.chapeu !== null) {
+        let img = imagensCarregadas.chapeu[avatar.chapeu];
+        let temp = document.createElement('canvas');
+        temp.width = img.width;
+        temp.height = img.height;
+        let tctx = temp.getContext('2d');
+        tctx.drawImage(img, 0, 0);
+        // tctx.globalCompositeOperation = 'source-in';
+        // tctx.fillStyle = strokeColors.chapeu;
+        // tctx.fillRect(0, 0, img.width, img.height);
+        tctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(temp, 0, 0);
+    }
+    // ROUPA
+    if (avatar.roupa !== null) {
+        let img = imagensCarregadas.roupa[avatar.roupa];
+        let temp = document.createElement('canvas');
+        temp.width = img.width;
+        temp.height = img.height;
+        let tctx = temp.getContext('2d');
+        tctx.drawImage(img, 0, 0);
+        tctx.globalCompositeOperation = 'source-in';
+        tctx.fillStyle = strokeColors.roupa;
+        tctx.fillRect(0, 0, img.width, img.height);
+        tctx.globalCompositeOperation = 'source-over';
         ctx.drawImage(temp, 0, 0);
     }
 }
@@ -182,7 +197,7 @@ if (colorPicker) {
 }
 
 // Handlers para cada color picker
-['base','nariz','olhos','boca','cabelo','roupa','fundo','detalheFundo','baseOlho','baseCor','bochecha'].forEach(function(cat) {
+['base','nariz','olhos','boca','cabelo','chapeu','roupa','fundo','detalheFundo','baseOlho','baseCor','bochecha'].forEach(function(cat) {
     const picker = document.getElementById('strokeColor-' + cat);
     if (picker) {
         picker.addEventListener('input', function() {

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criador de Avatar - HOME</title>
+    <link rel="stylesheet" href="./assets/styles/estilo_home.css">
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <a class="logo" href="../index.html">Criar meu Avatar</a>
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Abrir menu de navegação">☰</button>
+            <nav class="menu" id="menu">
+                <a href="#sobre">Sobre</a>
+                <a href="#informacoes">Informações</a>
+                <a href="#recursos">Recursos</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h1>Crie seu Avatar Perfeito</h1>
+                <p>Transforme sua criatividade em avatares únicos e personalizados</p>
+                <button class="cta-button" onclick="window.location.href='../index.html'">
+                    Começar Agora
+                </button>
+            </div>
+        </section>
+        <section id="sobre">
+            <div class="container">
+                <h1>
+                    Sobre o Criador de Avatar
+                </h1>
+                <p>
+                    Nossa plataforma permite que você crie avatares únicos e personalizados de forma simples e
+                    intuitiva.
+                    Aqui você pode expressar sua criatividade sem limites. O projeto foi desenvolvido por alunos do
+                    5º período de Bacharelado em Ciência da Computação, como critério de avaliação da disciplina de
+                    Web Front-End. O objetivo é proporcionar uma experiência divertida e interativa, onde você pode
+                    criar avatares que representem sua personalidade ou estilo.
+                </p>
+            </div>
+        </section>
+        <section id="informacoes">
+            <div class="container">
+                <h2>Como Funciona</h2>
+                <p>
+                    Basta escolher as características do seu avatar, como rosto, olhos, cabelo e roupas.
+                    Você pode ajustar as cores e salvar seu avatar para usar onde quiser.
+                </p>
+            </div>
+        </section>
+        <section id="recursos">
+            <div class="container">
+                <h2>Recursos</h2>
+                <ul>
+                    <li>Criação de avatares personalizados</li>
+                    <li>Várias opções de personalização</li>
+                    <li>Interface amigável e fácil de usar</li>
+                    <li>Salvar e compartilhar seus avatares</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="text-center">
+            <p class="mb-0">&copy; 2025 - 5º BCC - Criador de Avatar | Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+
+</body>
+
+</html>

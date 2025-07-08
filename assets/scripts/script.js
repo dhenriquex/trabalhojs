@@ -5,7 +5,7 @@ const status = document.getElementById("status");
 
 // Base de dados das imagens
 const imagemDB = {
-  base: ["./img/base.png"],
+  base: ["./img/base_contorno.png"],
   olhos: [
     "./img/olho_1.png",
     "./img/olho_2.png",
@@ -18,10 +18,16 @@ const imagemDB = {
     "./img/nariz_3.png",
   ],
   cabelo: [
-    "./img/olho_1.png",
-    "./img/olho_2.png",
-    "./img/olho_3.png",
-    "./img/olho_4.png",
+    "./img/cabelo_1.png",
+    "./img/cabelo_2.png",
+    "./img/cabelo_3.png",
+  ],
+  chapeu: [
+    "./img/chapeu_1.png",
+    "./img/chapeu_2.png",
+    "./img/chapeu_3.png",
+    "./img/chapeu_4.png",
+    "./img/chapeu_5.png",
   ],
   boca: [
     "./img/boca_1.png",
@@ -30,14 +36,12 @@ const imagemDB = {
     "./img/boca_4.png",
   ],
   roupa: [
-    "./img/olho_1.png",
-    "./img/olho_2.png",
-    "./img/olho_3.png",
-    "./img/olho_4.png",
+    "./img/roupa_1.png",
+    "./img/roupa_2.png",
+    "./img/roupa_3.png",
   ],
   fundo: [
     "./img/fundo.png",
-    "./img/fundo_1.png"
   ],
   detalheFundo: [
     "./img/detalheFundo_1.png",
@@ -51,7 +55,7 @@ const imagemDB = {
   baseCor: [
     "./img/base_cor.png"
   ],
-  bochecha: [], // Adicione imagens de bochecha se existirem
+  bochecha: ["./img/bochecha.png"],
 };
 // Estado atual do avatar
 const avatar = {
@@ -59,6 +63,7 @@ const avatar = {
   olhos: null,
   nariz: null,
   cabelo: null,
+  chapeu:null,
   boca: null,
   roupa: null,
   fundo: null,
