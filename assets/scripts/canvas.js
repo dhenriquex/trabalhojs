@@ -5,20 +5,53 @@ let strokeColors = {
     olhos: '#000000',
     nariz: '#000000',
     boca: '#000000',
+    fundo: '#000000',
+    detalheFundo: '#000000',
+    baseOlho: '#000000',
+    baseCor: '#000000',
+    bochecha: '#000000',
 };
 
 function desenharAvatar() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // BASE
-    if (avatar.base !== null) {
-        let img = imagensCarregadas.base[avatar.base];
+    // FUNDO
+    if (avatar.fundo !== null) {
+        let img = imagensCarregadas.fundo[avatar.fundo];
         let temp = document.createElement('canvas');
         temp.width = img.width;
         temp.height = img.height;
         let tctx = temp.getContext('2d');
         tctx.drawImage(img, 0, 0);
         tctx.globalCompositeOperation = 'source-in';
-        tctx.fillStyle = strokeColors.base;
+        tctx.fillStyle = strokeColors.fundo;
+        tctx.fillRect(0, 0, img.width, img.height);
+        tctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(temp, 0, 0);
+    }
+    // DETALHE FUNDO
+    if (avatar.detalheFundo !== null) {
+        let img = imagensCarregadas.detalheFundo[avatar.detalheFundo];
+        let temp = document.createElement('canvas');
+        temp.width = img.width;
+        temp.height = img.height;
+        let tctx = temp.getContext('2d');
+        tctx.drawImage(img, 0, 0);
+        tctx.globalCompositeOperation = 'source-in';
+        tctx.fillStyle = strokeColors.detalheFundo;
+        tctx.fillRect(0, 0, img.width, img.height);
+        tctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(temp, 0, 0);
+    }
+    // BASE COR (preenchimento da base)
+    if (avatar.baseCor !== null) {
+        let img = imagensCarregadas.baseCor[avatar.baseCor];
+        let temp = document.createElement('canvas');
+        temp.width = img.width;
+        temp.height = img.height;
+        let tctx = temp.getContext('2d');
+        tctx.drawImage(img, 0, 0);
+        tctx.globalCompositeOperation = 'source-in';
+        tctx.fillStyle = strokeColors.baseCor;
         tctx.fillRect(0, 0, img.width, img.height);
         tctx.globalCompositeOperation = 'source-over';
         ctx.drawImage(temp, 0, 0);
@@ -47,6 +80,20 @@ function desenharAvatar() {
         tctx.drawImage(img, 0, 0);
         tctx.globalCompositeOperation = 'source-in';
         tctx.fillStyle = strokeColors.cabelo;
+        tctx.fillRect(0, 0, img.width, img.height);
+        tctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(temp, 0, 0);
+    }
+    // BASE DO OLHO
+    if (avatar.baseOlho !== null) {
+        let img = imagensCarregadas.baseOlho[avatar.baseOlho];
+        let temp = document.createElement('canvas');
+        temp.width = img.width;
+        temp.height = img.height;
+        let tctx = temp.getContext('2d');
+        tctx.drawImage(img, 0, 0);
+        tctx.globalCompositeOperation = 'source-in';
+        tctx.fillStyle = strokeColors.baseOlho;
         tctx.fillRect(0, 0, img.width, img.height);
         tctx.globalCompositeOperation = 'source-over';
         ctx.drawImage(temp, 0, 0);
@@ -93,6 +140,34 @@ function desenharAvatar() {
         tctx.globalCompositeOperation = 'source-over';
         ctx.drawImage(temp, 0, 0);
     }
+    // BOCHECHA
+    if (avatar.bochecha !== null && imagensCarregadas.bochecha && imagensCarregadas.bochecha.length > 0) {
+        let img = imagensCarregadas.bochecha[avatar.bochecha];
+        let temp = document.createElement('canvas');
+        temp.width = img.width;
+        temp.height = img.height;
+        let tctx = temp.getContext('2d');
+        tctx.drawImage(img, 0, 0);
+        tctx.globalCompositeOperation = 'source-in';
+        tctx.fillStyle = strokeColors.bochecha;
+        tctx.fillRect(0, 0, img.width, img.height);
+        tctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(temp, 0, 0);
+    }
+    // BASE (traço por cima de tudo)
+    if (avatar.base !== null) {
+        let img = imagensCarregadas.base[avatar.base];
+        let temp = document.createElement('canvas');
+        temp.width = img.width;
+        temp.height = img.height;
+        let tctx = temp.getContext('2d');
+        tctx.drawImage(img, 0, 0);
+        tctx.globalCompositeOperation = 'source-in';
+        tctx.fillStyle = strokeColors.base;
+        tctx.fillRect(0, 0, img.width, img.height);
+        tctx.globalCompositeOperation = 'source-atop'; // para garantir que só o traço fique por cima
+        ctx.drawImage(temp, 0, 0);
+    }
 }
 
 // Color picker handler
@@ -107,7 +182,7 @@ if (colorPicker) {
 }
 
 // Handlers para cada color picker
-['base','nariz','olhos','boca','cabelo','roupa'].forEach(function(cat) {
+['base','nariz','olhos','boca','cabelo','roupa','fundo','detalheFundo','baseOlho','baseCor','bochecha'].forEach(function(cat) {
     const picker = document.getElementById('strokeColor-' + cat);
     if (picker) {
         picker.addEventListener('input', function() {

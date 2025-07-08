@@ -14,23 +14,33 @@
           <div class="avatar">
             <canvas id="avatarCanvas" width="800" height="804"></canvas>
           </div>
-          <button class="save-btn" onclick="salvarAvatar()">
-            Salvar Avatar
-          </button>
-          <button class="save-btn" onclick="salvarAvatarComo()">
-            Salvar Avatar Como...
-          </button>
+          <div class="botoes-avatar">
+            <button class="save-btn" onclick="salvarAvatar()">
+              Salvar Avatar
+            </button>
+            <button class="save-btn" onclick="salvarAvatarComo()">
+              Salvar Avatar Como...
+            </button>
+            <button class="save-btn" onclick="gerarAvatarAleatorio()">
+              Gerar Aleatório
+            </button>
+          </div>
         </div>
 
         <div class="controles">
           <div class="lista">
             <ul>
               <li data-category="base">Base</li>
-              <li data-category="nariz" class="active">Nariz</li>
+              <li data-category="baseCor">Base Cor</li>
+              <li data-category="nariz">Nariz</li>
               <li data-category="olhos">Olhos</li>
+              <li data-category="baseOlho">Base do Olho</li>
               <li data-category="boca">Boca</li>
+              <li data-category="bochecha">Bochecha</li>
               <li data-category="cabelo">Chapéu</li>
               <li data-category="roupa">Roupa</li>
+              <li data-category="fundo">Fundo</li>
+              <li data-category="detalheFundo">Detalhe Fundo</li>
             </ul>
             <div id="color-picker-group-base" class="color-picker-group" style="margin-top: 10px; display: flex; flex-direction: column; align-items: center; gap: 6px;">
               <label style="font-size: 13px;">Cor do traço da Base:</label>
@@ -56,6 +66,26 @@
               <label style="font-size: 13px;">Cor do traço da Roupa:</label>
               <input type="color" id="strokeColor-roupa" value="#000000" />
             </div>
+            <div id="color-picker-group-fundo" class="color-picker-group" style="margin-top: 10px; display: none; flex-direction: column; align-items: center; gap: 6px;">
+              <label style="font-size: 13px;">Cor do traço do Fundo:</label>
+              <input type="color" id="strokeColor-fundo" value="#000000" />
+            </div>
+            <div id="color-picker-group-detalheFundo" class="color-picker-group" style="margin-top: 10px; display: none; flex-direction: column; align-items: center; gap: 6px;">
+              <label style="font-size: 13px;">Cor do traço do Detalhe Fundo:</label>
+              <input type="color" id="strokeColor-detalheFundo" value="#000000" />
+            </div>
+            <div id="color-picker-group-baseOlho" class="color-picker-group" style="margin-top: 10px; display: none; flex-direction: column; align-items: center; gap: 6px;">
+              <label style="font-size: 13px;">Cor da Base do Olho:</label>
+              <input type="color" id="strokeColor-baseOlho" value="#000000" />
+            </div>
+            <div id="color-picker-group-baseCor" class="color-picker-group" style="margin-top: 10px; display: none; flex-direction: column; align-items: center; gap: 6px;">
+              <label style="font-size: 13px;">Cor da Base Cor:</label>
+              <input type="color" id="strokeColor-baseCor" value="#000000" />
+            </div>
+            <div id="color-picker-group-bochecha" class="color-picker-group" style="margin-top: 10px; display: none; flex-direction: column; align-items: center; gap: 6px;">
+              <label style="font-size: 13px;">Cor da Bochecha:</label>
+              <input type="color" id="strokeColor-bochecha" value="#000000" />
+            </div>
           </div> 
 
           <div class="opcoes-container">
@@ -78,6 +108,21 @@
               <div class="opcoes-grid"></div>
             </div>
             <div class="opcao" id="roupa-options">
+              <div class="opcoes-grid"></div>
+            </div>
+            <div class="opcao" id="fundo-options">
+              <div class="opcoes-grid"></div>
+            </div>
+            <div class="opcao" id="detalheFundo-options">
+              <div class="opcoes-grid"></div>
+            </div>
+            <div class="opcao" id="baseOlho-options">
+              <div class="opcoes-grid"></div>
+            </div>
+            <div class="opcao" id="baseCor-options">
+              <div class="opcoes-grid"></div>
+            </div>
+            <div class="opcao" id="bochecha-options">
               <div class="opcoes-grid"></div>
             </div>
           </div>

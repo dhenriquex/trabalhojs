@@ -14,8 +14,6 @@ body {
   padding: 20px;
 }
 
-
-
 main {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
@@ -78,6 +76,14 @@ h1 {
 .save-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.botoes-avatar {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .controles {

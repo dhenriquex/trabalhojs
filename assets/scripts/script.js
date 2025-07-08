@@ -35,6 +35,23 @@ const imagemDB = {
     "./img/olho_3.png",
     "./img/olho_4.png",
   ],
+  fundo: [
+    "./img/fundo.png",
+    "./img/fundo_1.png"
+  ],
+  detalheFundo: [
+    "./img/detalheFundo_1.png",
+    "./img/detalheFundo_2.png"
+  ],
+  baseOlho: [
+    "./img/olhoFundo_1.png",
+    "./img/olhoFundo_2.png",
+    "./img/olhoFundo_3.png"
+  ],
+  baseCor: [
+    "./img/base_cor.png"
+  ],
+  bochecha: [], // Adicione imagens de bochecha se existirem
 };
 // Estado atual do avatar
 const avatar = {
@@ -44,6 +61,11 @@ const avatar = {
   cabelo: null,
   boca: null,
   roupa: null,
+  fundo: null,
+  detalheFundo: null,
+  baseOlho: null,
+  baseCor: null,
+  bochecha: null,
 };
 
 let imagensCarregadas = {};
@@ -128,4 +150,23 @@ function atualizarBotoesAtivos(category, selectedIndex) {
     if (opt === selectedIndex) btn.classList.add("selected");
     else btn.classList.remove("selected");
   });
+}
+
+// Gerar aleatório
+function gerarAvatarAleatorio() {
+  for (const categoria in imagemDB) {
+    const opcoes = imagemDB[categoria];
+    if (Array.isArray(opcoes) && opcoes.length > 0) {
+      const indiceAleatorio = Math.floor(Math.random() * opcoes.length);
+      avatar[categoria] = indiceAleatorio;
+      atualizarBotoesAtivos(categoria, avatar[categoria]);
+    }
+  }
+  // Aleatorizar cores dos traços
+  for (const cor in strokeColors) {
+    strokeColors[cor] = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+    const picker = document.getElementById('strokeColor-' + cor);
+    if (picker) picker.value = strokeColors[cor];
+  }
+  desenharAvatar();
 }
