@@ -167,7 +167,7 @@ section#hero {
   padding: 2rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(10px);
   margin-bottom: 2rem;
 }
 
@@ -176,7 +176,7 @@ section h1, section h2 {
 }
 
 footer {
-  background: linear-gradient(90deg, #0f3460, #16213e, #0f3460);
+  background: #7452ac;
   color: white;
   padding: 40px 0;
   text-align: center;
